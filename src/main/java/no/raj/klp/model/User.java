@@ -15,7 +15,7 @@ public class User {
 
     @NotBlank(message = "Email must not be blank")
     @Email(message = "Must be a valid email address")
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @NotNull(message = "Type must not be null")

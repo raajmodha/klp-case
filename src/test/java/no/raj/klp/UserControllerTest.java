@@ -188,6 +188,19 @@ class UserControllerTest {
             .andExpect(status().isBadRequest());
     }
 
+    @Test
+    void shouldReturn409WhenEmailAlreadyExists() throws Exception {
+        mockMvc.perform(post("/user")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(new UserRequest("duplicate@klp.no", UserType.USER))))
+            .andExpect(status().isCreated());
+
+        mockMvc.perform(post("/user")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(new UserRequest("duplicate@klp.no", UserType.ADMIN))))
+            .andExpect(status().isConflict());
+    }
+
     private void createUser(String email, UserType type) throws Exception {
         mockMvc.perform(post("/user")
             .contentType(MediaType.APPLICATION_JSON)
