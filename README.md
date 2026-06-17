@@ -10,8 +10,8 @@ Spring Boot REST API for the KLP senior developer technical case study.
 
 ## Notable implementation choices
 
-- **Records** — `UserRequest` and `UserResponse` are Java records. They're immutable data carriers, so there's no reason for them to be mutable classes with setters.
-- **Virtual threads** — enabled via `spring.threads.virtual.enabled=true`. The app does I/O on every request (DB + external HTTP), so virtual threads are a natural fit.
+- **Records** - `UserRequest` and `UserResponse` are Java records. They're immutable data carriers, so there's no reason for them to be mutable classes with setters.
+- **Virtual threads** - enabled via `spring.threads.virtual.enabled=true`. The app does I/O on every request (DB + external HTTP), so virtual threads are a natural fit.
 
 ## Run
 
@@ -42,7 +42,7 @@ Returns the user with the given ID. `404` if not found.
 
 ### GET /user?type-filter=ADMIN
 
-Returns all users. `type-filter` is optional — omit to return all.
+Returns all users. `type-filter` is optional - omit to return all.
 
 ### GET /county/{countyNumber}
 
@@ -50,7 +50,7 @@ Looks up the Norwegian county name from Kartverket. `countyNumber` must be exact
 
 ## H2 Console
 
-`http://localhost:8080/h2-console` — JDBC URL: `jdbc:h2:mem:klpdb`, username: `sa`, no password.
+`http://localhost:8080/h2-console` - JDBC URL: `jdbc:h2:mem:klpdb`, username: `sa`, no password.
 
 ## Swagger UI
 
